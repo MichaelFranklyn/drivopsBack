@@ -22,7 +22,7 @@ const schemaSales = yup.object().shape({
   id_seller: yup.string().required(),
   valor_carro: yup.string().required(),
   desconto: yup.string().required(),
-  data: yup.string().required(),
+  data_venda: yup.string().required(),
 });
 
 module.exports = {
