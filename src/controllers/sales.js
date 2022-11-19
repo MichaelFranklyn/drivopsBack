@@ -66,7 +66,9 @@ const addSale = async (req, res) => {
         "s.valor_carro as valor_bruto",
         "s.desconto as desconto",
         "s.valor_venda as valor_liquido",
-        "s.data_venda as data_venda"
+        "s.data_venda as data_venda",
+        "se.id as id_seller",
+        "c.id as id_car"
       )
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
@@ -89,7 +91,9 @@ const listSales = async (req, res) => {
         "s.valor_carro as valor_bruto",
         "s.desconto as desconto",
         "s.valor_venda as valor_liquido",
-        "s.data_venda as data_venda"
+        "s.data_venda as data_venda",
+        "se.id as id_seller",
+        "c.id as id_car"
       )
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
