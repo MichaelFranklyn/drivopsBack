@@ -3,7 +3,7 @@ const { schemaSales } = require("../validations/schemas");
 const { checkAndUpdateAmount } = require("../utils/checkAndUpdateAmount");
 
 const addSale = async (req, res) => {
-  const { id_car, id_seller, valor_carro, desconto, data } = req.body;
+  const { id_car, id_seller, valor_carro, desconto, data_venda } = req.body;
 
   try {
     await schemaSales.validate(req.body);
@@ -38,7 +38,7 @@ const addSale = async (req, res) => {
       valor_venda: `${
         Number(valor_carro) - (Number(valor_carro) * Number(desconto)) / 100
       }`,
-      data,
+      data_venda,
     });
 
     if (!insertSale) {
@@ -66,7 +66,7 @@ const addSale = async (req, res) => {
         "s.valor_carro as Valor bruto",
         "s.desconto as Desconto",
         "s.valor_venda as Valor liquido",
-        "s.data as Data da venda"
+        "s.data_venda as Data da venda"
       )
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
@@ -89,7 +89,7 @@ const listSales = async (req, res) => {
         "s.valor_carro as Valor bruto",
         "s.desconto as Desconto",
         "s.valor_venda as Valor liquido",
-        "s.data as Data da venda"
+        "s.data_venda as Data da venda"
       )
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
@@ -171,7 +171,7 @@ const attSale = async (req, res) => {
         valor_venda: `${
           Number(valor_carro) - (Number(valor_carro) * Number(desconto)) / 100
         }`,
-        data,
+        data_venda,
       })
       .where("id", id);
 

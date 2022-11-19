@@ -33,5 +33,5 @@ create table sales (
 	valor_carro text not null,
 	desconto text not null,
   	valor_venda text not Null,
-  	data timestamp not null
+  	data_venda timestamp not null
 );
