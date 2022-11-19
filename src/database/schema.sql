@@ -1,5 +1,3 @@
-create database systemcar
-
 drop table if exists manager;
 
 create table manager (
@@ -34,5 +32,6 @@ create table sales (
 	id_seller integer not null references sellers(id),
 	valor_carro text not null,
 	desconto text not null,
-  	valor_venda text not Null
+  	valor_venda text not Null,
+  	data timestamp not null
 );
