@@ -60,13 +60,13 @@ const addSale = async (req, res) => {
     const salesData = await knex
       .select(
         "s.id",
-        "se.nome as Vendedor",
-        "c.nome as Nome do carro",
-        "c.marca as Marca do carro",
-        "s.valor_carro as Valor bruto",
-        "s.desconto as Desconto",
-        "s.valor_venda as Valor liquido",
-        "s.data_venda as Data da venda"
+        "se.nome as vendedor",
+        "c.nome as nome_carro",
+        "c.marca as marca_carro",
+        "s.valor_carro as valor_bruto",
+        "s.desconto as desconto",
+        "s.valor_venda as valor_liquido",
+        "s.data_venda as data_venda"
       )
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
@@ -83,13 +83,13 @@ const listSales = async (req, res) => {
     const salesData = await knex
       .select(
         "s.id",
-        "se.nome as Vendedor",
-        "c.nome as Nome do carro",
-        "c.marca as Marca do carro",
-        "s.valor_carro as Valor bruto",
-        "s.desconto as Desconto",
-        "s.valor_venda as Valor liquido",
-        "s.data_venda as Data da venda"
+        "se.nome as vendedor",
+        "c.nome as nome_carro",
+        "c.marca as marca_carro",
+        "s.valor_carro as valor_bruto",
+        "s.desconto as desconto",
+        "s.valor_venda as valor_liquido",
+        "s.data_venda as data_venda"
       )
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
