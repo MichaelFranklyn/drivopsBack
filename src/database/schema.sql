@@ -32,6 +32,7 @@ create table sales (
 	id_seller integer not null references sellers(id),
 	valor_carro text not null,
 	desconto text not null,
-  	valor_venda text not Null,
-  	data_venda timestamp not null
+  	valor_venda integer not Null,
+  	data_venda timestamp not null,
+	mes text not null
 );

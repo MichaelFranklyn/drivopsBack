@@ -18,11 +18,10 @@ const listSellersAndSales = async (req, res) => {
 const listMonthsAndSales = async (req, res) => {
   try {
     const listMonthsSales = await knex
-      .select("s.data_venda")
+      .select("s.mes")
       .from("sales as s")
-      .leftJoin("sellers as se", "se.id", "s.id_seller")
       .sum("valor_venda")
-      .groupBy("s.data_venda");
+      .groupBy("s.mes");
 
     return res.status(200).json(listMonthsSales);
   } catch (error) {
@@ -33,11 +32,11 @@ const listMonthsAndSales = async (req, res) => {
 const listMonthsAndSalesAvg = async (req, res) => {
   try {
     const listMonthsSalesAvg = await knex
-      .select("s.data_venda")
+      .select("s.mes")
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
       .avg("valor_venda")
-      .groupBy("s.data_venda");
+      .groupBy("s.mes");
 
     return res.status(200).json(listMonthsSalesAvg);
   } catch (error) {

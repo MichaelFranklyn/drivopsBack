@@ -1,6 +1,7 @@
 const knex = require("../database/connection");
 const { schemaSales } = require("../validations/schemas");
 const { checkAndUpdateAmount } = require("../utils/checkAndUpdateAmount");
+const dayjs = require("dayjs");
 
 const addSale = async (req, res) => {
   const { id_car, id_seller, valor_carro, desconto, data_venda } = req.body;
@@ -39,6 +40,7 @@ const addSale = async (req, res) => {
         Number(valor_carro) - (Number(valor_carro) * Number(desconto)) / 100
       }`,
       data_venda,
+      mes: dayjs(data_venda).month() + 1,
     });
 
     if (!insertSale) {
