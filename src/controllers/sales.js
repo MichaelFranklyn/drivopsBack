@@ -155,7 +155,7 @@ const deleteSale = async (req, res) => {
 
 const attSale = async (req, res) => {
   const { id } = req.params;
-  const { id_car, id_seller, valor_carro, desconto, data } = req.body;
+  const { id_car, id_seller, valor_carro, desconto, data_venda } = req.body;
 
   try {
     await schemaSales.validate(req.body);
