@@ -53,4 +53,5 @@ route.get("/charts1", listSellersAndSales);
 route.get("/charts2", listMonthsAndSales);
 route.get("/charts3", listMonthsAndSalesAvg);
 route.get("/charts4", listCarsAndQtd);
+
 module.exports = route;
