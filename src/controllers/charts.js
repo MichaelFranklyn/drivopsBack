@@ -23,7 +23,7 @@ const listMonthsAndSales = async (req, res) => {
       .from("sales as s")
       .sum("valor_venda as soma")
       .groupBy("s.mes")
-      .orderBy("soma");
+      .orderBy("s.mes");
 
     return res.status(200).json(listMonthsSales);
   } catch (error) {
@@ -39,7 +39,7 @@ const listMonthsAndSalesAvg = async (req, res) => {
       .leftJoin("sellers as se", "se.id", "s.id_seller")
       .avg("valor_venda as media")
       .groupBy("s.mes")
-      .orderBy("media");
+      .orderBy("s.mes");
 
     return res.status(200).json(listMonthsSalesAvg);
   } catch (error) {
