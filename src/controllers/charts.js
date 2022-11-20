@@ -7,7 +7,8 @@ const listSellersAndSales = async (req, res) => {
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
       .sum("valor_venda")
-      .groupBy("se.nome");
+      .groupBy("se.nome")
+      .orderBy();
 
     return res.status(200).json(listSellersSales);
   } catch (error) {
@@ -22,7 +23,7 @@ const listMonthsAndSales = async (req, res) => {
       .from("sales as s")
       .sum("valor_venda")
       .groupBy("s.mes")
-      .orderBy("valor_venda");
+      .orderBy();
 
     return res.status(200).json(listMonthsSales);
   } catch (error) {
@@ -38,7 +39,7 @@ const listMonthsAndSalesAvg = async (req, res) => {
       .leftJoin("sellers as se", "se.id", "s.id_seller")
       .avg("valor_venda")
       .groupBy("s.mes")
-      .orderBy("valor_venda");
+      .orderBy();
 
     return res.status(200).json(listMonthsSalesAvg);
   } catch (error) {
@@ -54,7 +55,7 @@ const listCarsAndQtd = async (req, res) => {
       .leftJoin("sellers as se", "se.id", "s.id_seller")
       .count("valor_venda")
       .groupBy("se.nome")
-      .orderBy("valor_venda");
+      .orderBy();
 
     return res.status(200).json(listCarsQtd);
   } catch (error) {
