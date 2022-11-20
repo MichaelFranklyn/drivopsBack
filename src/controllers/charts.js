@@ -6,9 +6,9 @@ const listSellersAndSales = async (req, res) => {
       .select("se.nome as vendedor")
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
-      .sum("valor_venda")
+      .sum("valor_venda as soma")
       .groupBy("se.nome")
-      .orderBy();
+      .orderBy("soma");
 
     return res.status(200).json(listSellersSales);
   } catch (error) {
@@ -21,9 +21,9 @@ const listMonthsAndSales = async (req, res) => {
     const listMonthsSales = await knex
       .select("s.mes")
       .from("sales as s")
-      .sum("valor_venda")
+      .sum("valor_venda as soma")
       .groupBy("s.mes")
-      .orderBy();
+      .orderBy("soma");
 
     return res.status(200).json(listMonthsSales);
   } catch (error) {
@@ -37,9 +37,9 @@ const listMonthsAndSalesAvg = async (req, res) => {
       .select("s.mes")
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
-      .avg("valor_venda")
+      .avg("valor_venda as media")
       .groupBy("s.mes")
-      .orderBy();
+      .orderBy("media");
 
     return res.status(200).json(listMonthsSalesAvg);
   } catch (error) {
@@ -53,9 +53,9 @@ const listCarsAndQtd = async (req, res) => {
       .select("se.nome as vendedor")
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
-      .count("valor_venda")
+      .count("valor_venda as contagem")
       .groupBy("se.nome")
-      .orderBy();
+      .orderBy("contagem");
 
     return res.status(200).json(listCarsQtd);
   } catch (error) {
