@@ -72,7 +72,8 @@ const addSale = async (req, res) => {
       )
       .from("sales as s")
       .leftJoin("sellers as se", "se.id", "s.id_seller")
-      .leftJoin("cars as c", "c.id", "s.id_car");
+      .leftJoin("cars as c", "c.id", "s.id_car")
+      .orderBy("s.id");
 
     return res.status(200).json(salesData[salesData.length - 1]);
   } catch (error) {

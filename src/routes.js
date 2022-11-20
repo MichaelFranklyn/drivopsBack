@@ -3,7 +3,13 @@ const route = express();
 
 const { checkLogin } = require("./middleware/checkLogin");
 const { loginUser, addUser } = require("./controllers/user");
-const { addCar, listCars, deleteCar, attCar } = require("./controllers/cars");
+const {
+  addCar,
+  listCars,
+  deleteCar,
+  attCar,
+  teste,
+} = require("./controllers/cars");
 const {
   addSeller,
   listSellers,
@@ -16,6 +22,12 @@ const {
   deleteSale,
   attSale,
 } = require("./controllers/sales");
+const {
+  listSellersAndSales,
+  listMonthsAndSales,
+  listMonthsAndSalesAvg,
+  listCarsAndQtd,
+} = require("./controllers/charts");
 
 route.post("/cadastro", addUser);
 route.post("/login", loginUser);
@@ -37,4 +49,8 @@ route.get("/sales", listSales);
 route.delete("/delSale/:id", deleteSale);
 route.put("/sale/:id", attSale);
 
+route.get("/charts1", listSellersAndSales);
+route.get("/charts2", listMonthsAndSales);
+route.get("/charts3", listMonthsAndSalesAvg);
+route.get("/charts4", listCarsAndQtd);
 module.exports = route;
