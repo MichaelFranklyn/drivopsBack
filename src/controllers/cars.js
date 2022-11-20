@@ -85,7 +85,7 @@ const attCar = async (req, res) => {
     }
 
     if (car.nome !== nome) {
-      const checkCarExists = await knex("car").where("nome", nome).first();
+      const checkCarExists = await knex("cars").where("nome", nome).first();
 
       if (checkCarExists) {
         return res
